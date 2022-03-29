@@ -1,31 +1,36 @@
 package model;
 
-import java.util.Date;
-//Duration
-//
+import model.TimeSpan;
+
+import java.sql.Time;
 
 public class RaceResult {
     private Car car;
-    private Date timeSpan;
+    private TimeSpan timeSpan;
+
+
+
+    RaceResult(Car car, TimeSpan timeSpan) {
+        setCar(car);
+        setTimeSpan(timeSpan);
+    }
+
+
+
 
     public void setCar(Car car) {
         this.car = car;
     }
 
-    public void setTimeSpan(Date timeSpan) {
+    public void setTimeSpan(TimeSpan timeSpan) {
         this.timeSpan = timeSpan;
-    }
-
-    RaceResult(Car car, Date timeSpan){
-        setCar(car);
-        setTimeSpan(timeSpan);
     }
 
     public Car getCar() {
         return this.car;
     }
 
-    public Date getTimeSpan() {
+    public TimeSpan getTimeSpan() {
         return this.timeSpan;
     }
 

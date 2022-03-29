@@ -4,14 +4,15 @@ import java.util.UUID;
 //import Engine;
 
 public class Car {
-    String manufacturer;
-    String modelName;
-    int year;
-    UUID vinCode;
-    String type;
-    //private long privateCarAmount  = getNumberOfExistingCars();;
-    Engine Engine;
-    public ServiceBook ServiceBook;
+    private String manufacturer;
+    private String modelName;
+    private int year;
+    private UUID vinCode;
+    private String type;
+    private Engine Engine;
+    private ServiceBook ServiceBook;
+    static long publicNumberOfCar = 0;
+    private  int speed;
 
     public Car(String manufacturer, String modelName, int year){
         this.manufacturer = manufacturer;
@@ -22,14 +23,27 @@ public class Car {
         //numberOfCars = numberOfCars +1;
     }
 
-    public Car(String manufacturer, String modelName, int year, String type)
+    public Car(String manufacturer, String modelName, int year, String type, int speed)
     {
         this.manufacturer = manufacturer;
         this.modelName = modelName;
         this.year = year;
         this.vinCode = UUID.randomUUID();
+        this.speed = speed;
         this.Engine = new Engine(vinCode, type);
         this.ServiceBook = new ServiceBook(this);
+    }
+
+    void setSpeed(int speed){
+        if(speed>0){
+            this.speed = speed;
+        }else{
+            this.speed = 0;
+        }
+    }
+
+    int getSpeed(){
+        return  this.speed;
     }
 
     public String getManufacturer(){
@@ -59,11 +73,11 @@ public class Car {
         return this.manufacturer+" "+this.modelName+" year "+this.year+" VIN: "+this.vinCode;
     }
 
-    static long PublicNumberOfCar = 0;
+
     public static String getNumberOfExistingCars(){
 
-        PublicNumberOfCar +=1;
-        return Long.toString(PublicNumberOfCar);
+        publicNumberOfCar +=1;
+        return Long.toString(publicNumberOfCar);
     }
 
 
